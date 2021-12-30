@@ -30,7 +30,8 @@ public class LoginHandler extends ChannelInboundHandlerAdapter {
 
         User user = User.of(stringMessage, ctx.channel());
         user.login(channelRepository, ctx.channel());
-
+        log.info(ctx.channel().remoteAddress().toString());
+        ctx.writeAndFlush("02001736303030303030303030313030323030300321");
         ctx.writeAndFlush("Succesfully logged in as "+user.getUsername()+". \r\n");
 
     }
